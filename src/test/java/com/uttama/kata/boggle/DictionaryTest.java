@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.hasSize;
 import static org.junit.Assert.*;
 
@@ -17,5 +18,10 @@ public class DictionaryTest {
         Set<String> prefixes = dictionary.prefixesFor(new HashSet<String>(Arrays.asList("alpha", "all", "beta")));
         assertThat(prefixes, hasSize(10));
     }
-
+    @Test
+    public void containsPrefix() {
+        Dictionary dictionary = new Dictionary();
+        dictionary.loadPrefixes();
+        assertThat(dictionary.containsPrefix("wo"), is(true));
+    }
 }

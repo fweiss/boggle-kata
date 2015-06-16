@@ -33,6 +33,6 @@ public class Board {
     }
 
     public char[] asCharArray() {
-        return new char[0];
+        return cells;
     }
 }

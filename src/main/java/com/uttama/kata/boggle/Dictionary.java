@@ -8,6 +8,7 @@ public class Dictionary {
     public boolean contains(String word) {
         return words.contains(word);
     }
+    private Set<String> prefixes;
     private static final Set<String> words = new HashSet(Arrays.asList(
             "and",
             "ant",
@@ -114,5 +115,13 @@ public class Dictionary {
             }
         }
         return prefixes;
+    }
+
+    public boolean containsPrefix(String prefix) {
+        return prefixes.contains(prefix);
+    }
+
+    public void loadPrefixes() {
+        prefixes = prefixesFor(words);
     }
 }

@@ -13,6 +13,7 @@ WordGenerator
 Path
 - has nodes
 - can create list of next paths
+- uses PathOffsets to extend paths
 
 PathOffsets
 - can list legal offsets for a given cell

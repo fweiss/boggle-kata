@@ -58,7 +58,12 @@ public class Path {
     }
 
     public String applyFrom(Board board) {
-        return "word";
+        char[] cells = board.asCharArray();
+        StringBuffer word = new StringBuffer();
+        for (int i=0; i<nodes.length; i++) {
+            word.append(cells[nodes[i]]);
+        }
+        return word.toString();
     }
     private boolean containsNode(int node) {
         for (int i=0; i<nodes.length; i++) {

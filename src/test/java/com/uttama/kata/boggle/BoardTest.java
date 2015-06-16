@@ -3,6 +3,7 @@ package com.uttama.kata.boggle;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.not;
@@ -23,6 +24,12 @@ public class BoardTest {
     public void create() {
         assertThat(board.getWidth(), is(equalTo(4)));
         assertThat(board.getHeight(), is(equalTo(4)));
+    }
+    @Test
+    public void asCharArray() {
+        board.fillCells("xyzabc");
+        char[] cells = board.asCharArray();
+        assertThat(cells, is(new char[]{ 'x', 'y', 'z', 'a', 'b', 'c' }));
     }
     @Test
     public void applyZero() {
