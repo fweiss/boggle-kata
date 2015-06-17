@@ -23,6 +23,10 @@ public class Path {
         return nodes.length;
     }
 
+    public int[] getNodes() {
+        return nodes;
+    }
+
     public List<Path> getNextPaths() {
         int currentLength = nodes.length;
         if (currentLength == 0) {
@@ -57,7 +61,7 @@ public class Path {
         return paths;
     }
 
-    public String applyFrom(Board board) {
+    public String xapplyFrom(Board board) {
         char[] cells = board.asCharArray();
         StringBuffer word = new StringBuffer();
         for (int i=0; i<nodes.length; i++) {

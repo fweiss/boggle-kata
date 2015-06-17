@@ -27,12 +27,4 @@ public class PathTest {
         Path nextPath = paths.get(0);
         assertThat(nextPath.getLength(), is(equalTo(1)));
     }
-    @Test
-    public void apply() {
-        Path path = new Path(new int[]{ 1, 2, 3, 7 });
-        Board board = mock(Board.class);
-        when(board.asCharArray()).thenReturn(new char[]{ 'x', 'f', 'o', 'r', 'x', 'x', 'x', 'd' });
-        String word = path.applyFrom(board);
-        assertThat(word, is(equalTo("ford")));
-    }
 }

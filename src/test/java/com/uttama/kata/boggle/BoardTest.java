@@ -19,6 +19,7 @@ public class BoardTest {
     @Before
     public void setup() {
         board = new Board();
+        board.fillCells("abcd" + "efgh" + "ijkl" + "mnop");
     }
     @Test
     public void create() {
@@ -45,8 +46,14 @@ public class BoardTest {
         assertThat(word, is(equalTo("a")));
     }
     @Test
+    public void applyTwo() {
+        Path mockPath = mock(Path.class);
+        when(mockPath.getNodes()).thenReturn(new int[]{ 5, 2});
+        String word = board.apply(mockPath);
+        assertThat(word, is("fc"));
+    }
+    @Test
     public void fill() {
-        board.fillCells("abcdefghijklmnop");
         assertThat(board.getCell(0, 0), is(equalTo('a')));
         assertThat(board.getCell(3,3), is(equalTo('p')));
 

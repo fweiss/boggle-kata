@@ -9,7 +9,7 @@ public class Dictionary {
         return words.contains(word);
     }
     private Set<String> prefixes;
-    private static final Set<String> words = new HashSet(Arrays.asList(
+    private static final Set<String> words = new HashSet<String>(Arrays.asList(
             "and",
             "ant",
             "antelope",

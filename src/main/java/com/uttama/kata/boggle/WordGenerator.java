@@ -22,7 +22,9 @@ public class WordGenerator {
     public List<String> wordsFrom(Board board) {
         List<String> words = new ArrayList<String>();
         for (Path path : paths) {
-            words.add(path.applyFrom(board));
+//            words.add(path.applyFrom(board));
+            String word = board.apply(path);
+            words.add(word);
         }
         return words;
     }
@@ -36,14 +38,15 @@ public class WordGenerator {
             paths.add(visitedPath);
             List<Path> nextPaths = visitedPath.getNextPaths();
             for (Path path : nextPaths) {
-                String word = path.applyFrom(board);
+                String word = board.apply(path);
                 if (dictionary.containsPrefix(word)) {
                     visit.add(path);
                 }
             }
         }
         for (Path path : paths) {
-            words.add(path.applyFrom(board));
+            String word = board.apply(path);
+            words.add(word);
         }
         return words;
     }
@@ -51,7 +54,7 @@ public class WordGenerator {
     protected Set<String> applyPathsToBoard(List<Path> paths, Board board, Dictionary dictionary) {
         Set<String> words = new HashSet<>();
         for (Path path : paths) {
-            String word = path.applyFrom(board);
+            String word = board.apply(path);
             if (dictionary.contains(word)) {
                 words.add(word);
             }

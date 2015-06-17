@@ -20,12 +20,13 @@ public class Board {
         return cells[x + y * 4];
     }
 
-    public void setCell(int x, int y, char letter) {
-
-    }
-
     public String apply(Path path) {
-        return path.getLength() == 0 ? "" : "a";
+        int[] nodes = path.getNodes();
+        StringBuffer word = new StringBuffer();
+        for (int i=0; i<nodes.length; i++) {
+            word.append(cells[nodes[i]]);
+        }
+        return word.toString();
     }
 
     public void fillCells(String wordplacefouryard) {
