@@ -21,6 +21,10 @@ public class BoardTest {
         board = new Board();
         board.fillCells("abcd" + "efgh" + "ijkl" + "mnop");
     }
+    @Test(expected=IllegalArgumentException.class)
+    public void fillUnderflow() {
+        board.fillCells("abc");
+    }
     @Test
     public void create() {
         assertThat(board.getWidth(), is(equalTo(4)));
@@ -28,9 +32,9 @@ public class BoardTest {
     }
     @Test
     public void asCharArray() {
-        board.fillCells("xyzabc");
+        board.fillCells("xyzabczzzzzzzzzz");
         char[] cells = board.asCharArray();
-        assertThat(cells, is(new char[]{ 'x', 'y', 'z', 'a', 'b', 'c' }));
+        assertThat(cells, is(new char[]{ 'x', 'y', 'z', 'a', 'b', 'c', 'z', 'z', 'z', 'z', 'z', 'z', 'z', 'z', 'z', 'z' }));
     }
     @Test
     public void applyZero() {

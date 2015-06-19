@@ -36,6 +36,10 @@ public class WordGenerator {
         while ( ! visit.isEmpty()) {
             Path visitedPath = visit.pop();
             paths.add(visitedPath);
+            String visitedWord = board.apply(visitedPath);
+            if (dictionary.contains(visitedWord)) {
+                words.add(visitedWord);
+            }
             List<Path> nextPaths = visitedPath.getNextPaths();
             for (Path path : nextPaths) {
                 String word = board.apply(path);
@@ -43,10 +47,6 @@ public class WordGenerator {
                     visit.add(path);
                 }
             }
-        }
-        for (Path path : paths) {
-            String word = board.apply(path);
-            words.add(word);
         }
         return words;
     }

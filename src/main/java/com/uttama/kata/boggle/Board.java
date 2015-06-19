@@ -1,5 +1,7 @@
 package com.uttama.kata.boggle;
 
+import java.util.Set;
+
 /**
  * Created by frankw on 6/12/2015.
  */
@@ -30,10 +32,17 @@ public class Board {
     }
 
     public void fillCells(String wordplacefouryard) {
+        if (wordplacefouryard.length() < getWidth() * getHeight()) {
+            throw new IllegalArgumentException("expected 16 characters");
+        }
         cells = wordplacefouryard.toCharArray();
     }
 
     public char[] asCharArray() {
         return cells;
+    }
+
+    public Set<String> getWords() {
+        return null;
     }
 }

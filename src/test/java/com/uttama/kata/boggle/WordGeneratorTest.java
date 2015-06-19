@@ -29,10 +29,10 @@ public class WordGeneratorTest {
         generator = new WordGenerator();
     }
 
-    @Test @Ignore
+    @Test
     public void listOfWords() {
 //        board.fillCells("wordplacefouryard");
-        board.fillCells("wordpostenopard");
+        board.fillCells("wordxxxxxxxxxxxx");
         Dictionary dictionary = new Dictionary();
         dictionary.loadPrefixes();
         Set<String> words = generator.wordsFrom2(board, dictionary);
