@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import java.util.Set;
 
+import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.containsInAnyOrder;
@@ -33,11 +34,11 @@ public class GameTest {
         assertThat(words.size(), is(equalTo(1)));
     }
     @Test
-    public void aGame() {
+    public void example1() {
         board.fillCells("ANTD" + "FIRT" + "SOWE" + "PAST");
         game.play();
         Set<String> words = game.getWords();
-        assertThat(words, containsInAnyOrder("ant"));
+        assertThat(words, hasItems("ant"));
     }
 
 }
