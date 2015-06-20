@@ -1,5 +1,6 @@
 package com.uttama.kata.boggle;
 
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -7,42 +8,36 @@ import java.util.Set;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.*;
 
 public class GameTest {
-    @Test
-    public void test() {
-        Board board = new Board();
-        Dictionary dictionary = new Dictionary();
+
+    private Board board;
+    private Dictionary dictionary;
+    private Game game;
+
+    @Before
+    public void setUp() throws Exception {
+        board = new Board();
+        dictionary = new Dictionary();
         dictionary.loadPrefixes(); // move
-        PathOffsets pathOffsets = new PathOffsets();
-        Game game = new Game(board, dictionary, pathOffsets);
+        game = new Game(board, dictionary, null);
+    }
+
+    @Test
+    public void simpleOneWord() {
+//        PathOffsets pathOffsets = new PathOffsets();
         Set<String> words = game.getWords("andzzzzzzzzzzzzz");
         assertThat(words.size(), is(equalTo(1)));
     }
-    @Test @Ignore
+    @Test
     public void aGame() {
-        Board board = new Board();
-        board.fillCells(
-"A"+
-"N"+
-"T"+
-"D"+
-"F"+
-"I"+
-"R"+
-"T"+
-"S"+
-"O"+
-"WE"+
-"P"+
-"A"+
-"S"+
-"T"
-        );
-        Set<String> words = board.getWords();
-        assertThat(words, contains("ant"));
+        board.fillCells("ANTD" + "FIRT" + "SOWE" + "PAST");
+        game.play();
+        Set<String> words = game.getWords();
+        assertThat(words, containsInAnyOrder("ant"));
     }
 
 }

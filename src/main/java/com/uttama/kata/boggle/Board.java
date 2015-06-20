@@ -31,18 +31,18 @@ public class Board {
         return word.toString();
     }
 
-    public void fillCells(String wordplacefouryard) {
-        if (wordplacefouryard.length() < getWidth() * getHeight()) {
+    public void fillCells(String fillString) {
+        if (fillString.length() != getWidth() * getHeight()) {
             throw new IllegalArgumentException("expected 16 characters");
         }
-        cells = wordplacefouryard.toCharArray();
+        cells = fillString.toLowerCase().toCharArray();
     }
 
     public char[] asCharArray() {
         return cells;
     }
 
-    public Set<String> getWords() {
+    public Set<String> xgetWords() {
         return null;
     }
 }

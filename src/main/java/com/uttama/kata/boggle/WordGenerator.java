@@ -6,7 +6,7 @@ public class WordGenerator {
     List<Path> paths;
     public WordGenerator() {
     }
-
+    // this does the brute force 12M
     public void generatePaths() {
         paths = new ArrayList<Path>();
         Deque<Path> visit = new ArrayDeque<Path>();

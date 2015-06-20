@@ -25,6 +25,16 @@ public class BoardTest {
     public void fillUnderflow() {
         board.fillCells("abc");
     }
+    @Test(expected=IllegalArgumentException.class)
+    public void fillOverflow() {
+        board.fillCells("abcdefghijklmnopqrstuvwxyz");
+    }
+    @Test
+    public void testUpperToLowerCase() {
+        board.fillCells("ABCDEFGHIJKLMNOP");
+        char[] cells = board.asCharArray();
+        assertThat(cells[1], is(equalTo('b')));
+    }
     @Test
     public void create() {
         assertThat(board.getWidth(), is(equalTo(4)));

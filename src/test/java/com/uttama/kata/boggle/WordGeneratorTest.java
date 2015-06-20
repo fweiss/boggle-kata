@@ -38,6 +38,7 @@ public class WordGeneratorTest {
         Set<String> words = generator.wordsFrom2(board, dictionary);
         assertThat(words.size(), is(equalTo(1)));
     }
+    // this one takes 15 sec
     @Test @Ignore
     public void generate() {
         board.fillCells("wordplacefouryard");
