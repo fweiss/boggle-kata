@@ -21,10 +21,4 @@ public class PathTest {
     public void emptyPath() {
         assertThat(emptyPath.getLength(), is(equalTo(0)));
     }
-    @Test
-    public void emptyPathShouldHaveNextPathWithOneNode() {
-        List<Path> paths = emptyPath.getNextPaths();
-        Path nextPath = paths.get(0);
-        assertThat(nextPath.getLength(), is(equalTo(1)));
-    }
 }

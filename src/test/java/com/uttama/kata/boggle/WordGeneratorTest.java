@@ -40,7 +40,7 @@ public class WordGeneratorTest {
     }
     // this one takes 15 sec
     @Test @Ignore
-    public void generate() {
+    public void generateAllPossible() {
         board.fillCells("wordplacefouryard");
         generator.generatePaths();
         List<String> words = generator.wordsFrom(board);

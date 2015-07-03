@@ -1,7 +1,5 @@
 package com.uttama.kata.boggle;
 
-import java.util.Collections;
-import java.util.List;
 import java.util.Set;
 
 public class Game {
@@ -9,7 +7,7 @@ public class Game {
     private final Dictionary dictionary;
     private final WordGenerator generator;
     private Set<String> words;
-    public Game(Board board, Dictionary dictionary, PathOffsets pathOffsets) {
+    public Game(Board board, Dictionary dictionary, PathFactory pathFactory) {
         this.board = board;
         this.dictionary = dictionary;
         generator = new WordGenerator();

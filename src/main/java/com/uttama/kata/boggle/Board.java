@@ -41,8 +41,4 @@ public class Board {
     public char[] asCharArray() {
         return cells;
     }
-
-    public Set<String> xgetWords() {
-        return null;
-    }
 }

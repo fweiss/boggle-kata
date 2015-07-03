@@ -3,8 +3,10 @@ package com.uttama.kata.boggle;
 import java.util.*;
 
 public class WordGenerator {
+    private final PathFactory pathFactory;
     List<Path> paths;
     public WordGenerator() {
+        pathFactory = new PathFactory();
     }
     // this does the brute force 12M
     public void generatePaths() {
@@ -14,7 +16,8 @@ public class WordGenerator {
         while ( ! visit.isEmpty()) {
             Path visitedPath = visit.pop();
             paths.add(visitedPath);
-            List<Path> nextPaths = visitedPath.getNextPaths();
+            List<Path> nextPaths = pathFactory.getNextPaths(visitedPath);
+//            List<Path> nextPaths = visitedPath.getNextPaths();
             visit.addAll(nextPaths);
         }
     }
@@ -40,7 +43,7 @@ public class WordGenerator {
             if (dictionary.contains(visitedWord)) {
                 words.add(visitedWord);
             }
-            List<Path> nextPaths = visitedPath.getNextPaths();
+            List<Path> nextPaths = pathFactory.getNextPaths(visitedPath);
             for (Path path : nextPaths) {
                 String word = board.apply(path);
                 if (dictionary.containsPrefix(word)) {

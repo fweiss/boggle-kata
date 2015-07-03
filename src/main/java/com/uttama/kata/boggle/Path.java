@@ -2,14 +2,13 @@ package com.uttama.kata.boggle;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.EnumMap;
 import java.util.List;
 
 /**
  * A Path visits a subset of the positions on a board.
  */
 public class Path {
-    private int[] nodes;
+    protected int[] nodes;
 
     public Path() {
         nodes = new int[0];
@@ -27,15 +26,15 @@ public class Path {
         return nodes;
     }
 
-    public List<Path> getNextPaths() {
+    public List<Path> xgetNextPaths() {
         int currentLength = nodes.length;
         if (currentLength == 0) {
             return empty();
         }
         int currentNode = nodes[currentLength -1];
         List<Path> paths = new ArrayList<Path>();
-        PathOffsets pathOffsets = new PathOffsets();
-        for (int offset : pathOffsets.forNode(currentNode)) {
+        PathFactory pathFactory = new PathFactory();
+        for (int offset : pathFactory.forNode(currentNode)) {
             int candidateNode = currentNode + offset;
             if (containsNode(candidateNode)) {
                 continue;
@@ -48,7 +47,7 @@ public class Path {
         }
         return paths;
     }
-    private List<Path> empty() {
+    protected List<Path> empty() {
         List<Path> paths = new ArrayList<Path>();
         int currentLength = nodes.length;
         for (int i=0; i<16; i++) {
@@ -69,7 +68,7 @@ public class Path {
         }
         return word.toString();
     }
-    private boolean containsNode(int node) {
+    protected boolean containsNode(int node) {
         for (int i=0; i<nodes.length; i++) {
             if (nodes[i] == node) {
                 return true;
