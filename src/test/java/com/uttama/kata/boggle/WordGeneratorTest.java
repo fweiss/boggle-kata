@@ -10,7 +10,6 @@ import java.util.Set;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.hasSize;
 import static org.junit.Assert.*;
 import static org.hamcrest.Matchers.containsInAnyOrder;
@@ -33,7 +32,7 @@ public class WordGeneratorTest {
 //        board.fillCells("wordplacefouryard");
         board.fillCells("wordxxxxxxxxxxxx");
         HashSetVocabulary vocabulary = new HashSetVocabulary();
-        Set<String> words = generator.wordsFrom2(board, vocabulary);
+        Set<String> words = generator.wordsFrom(board, vocabulary);
         assertThat(words.size(), is(equalTo(1)));
     }
     // this one takes 15 sec
@@ -41,13 +40,11 @@ public class WordGeneratorTest {
     public void generateAllPossible() {
         board.fillCells("wordplacefouryard");
         generator.generatePaths();
-        List<String> words = generator.wordsFrom(board);
-        assertThat(words.size(), is(greaterThan(4)));
     }
     @Test
     public void applyPathsToBoard() {
         board.fillCells("xone" + "twox" + "tree" + "hxxx");
-        List<Path> paths = new ArrayList<Path>();
+        List<Path> paths = new ArrayList<>();
         paths.add(new Path(new int[]{ 1, 2, 3 }));
         paths.add(new Path(new int[]{ 4, 5, 6 }));
         paths.add(new Path(new int[]{ 8, 12, 9, 10, 11 }));

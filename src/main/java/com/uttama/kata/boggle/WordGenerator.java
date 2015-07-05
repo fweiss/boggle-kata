@@ -10,31 +10,21 @@ public class WordGenerator {
     }
     // this does the brute force 12M
     public void generatePaths() {
-        paths = new ArrayList<Path>();
-        Deque<Path> visit = new ArrayDeque<Path>();
+        paths = new ArrayList<>();
+        Deque<Path> visit = new ArrayDeque<>();
         visit.push(new Path());
         while ( ! visit.isEmpty()) {
             Path visitedPath = visit.pop();
             paths.add(visitedPath);
             List<Path> nextPaths = pathFactory.getNextPaths(visitedPath);
-//            List<Path> nextPaths = visitedPath.getNextPaths();
             visit.addAll(nextPaths);
         }
     }
 
-    public List<String> wordsFrom(Board board) {
-        List<String> words = new ArrayList<String>();
-        for (Path path : paths) {
-//            words.add(path.applyFrom(board));
-            String word = board.apply(path);
-            words.add(word);
-        }
-        return words;
-    }
-    public Set<String> wordsFrom2(Board board, Vocabulary vocabulary) {
-        Set<String> words = new HashSet<String>();
-        paths = new ArrayList<Path>();
-        Deque<Path> visit = new ArrayDeque<Path>();
+    public Set<String> wordsFrom(Board board, Vocabulary vocabulary) {
+        Set<String> words = new HashSet<>();
+        paths = new ArrayList<>();
+        Deque<Path> visit = new ArrayDeque<>();
         visit.push(new Path());
         while ( ! visit.isEmpty()) {
             Path visitedPath = visit.pop();

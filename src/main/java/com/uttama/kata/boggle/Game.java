@@ -25,7 +25,7 @@ public class Game {
     }
     public Set<String> getWords(String fill) {
         board.fillCells(fill);
-        Set<String> words = generator.wordsFrom2(board, vocabulary);
+        Set<String> words = generator.wordsFrom(board, vocabulary);
         return words;
     }
     public Set<String> getWords() {
@@ -33,6 +33,6 @@ public class Game {
     }
 
     public void play() {
-        words = generator.wordsFrom2(board, vocabulary);
+        words = generator.wordsFrom(board, vocabulary);
     }
 }
