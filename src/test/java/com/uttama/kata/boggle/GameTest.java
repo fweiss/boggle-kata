@@ -29,7 +29,6 @@ public class GameTest {
 
     @Test
     public void simpleOneWord() {
-//        PathOffsets pathOffsets = new PathOffsets();
         Set<String> words = game.getWords("andzzzzzzzzzzzzz");
         assertThat(words.size(), is(equalTo(1)));
     }

@@ -52,13 +52,6 @@ public class BoardTest {
         String word = board.apply(path);
         assertThat(word, is(equalTo("")));
     }
-//    @Test
-//    public void applyOne() {
-//        Path path = new Path();
-//        List<Path> paths = path.getNextPaths();
-//        String word = board.apply(paths.get(0));
-//        assertThat(word, is(equalTo("a")));
-//    }
     @Test
     public void applyTwo() {
         Path mockPath = mock(Path.class);

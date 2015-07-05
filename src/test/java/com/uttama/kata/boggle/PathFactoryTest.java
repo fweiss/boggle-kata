@@ -21,14 +21,21 @@ public class PathFactoryTest {
         pathFactory = new PathFactory();
     }
     @Test
-    public void initialPaths() {
-        List<Path> paths = pathFactory.getInitialPaths();
-        assertThat(paths.size(), is(16));
+    public void numberOfInitialPaths() {
+        List<Path> initialPaths = pathFactory.getInitialPaths();
+        assertThat(initialPaths.size(), is(16));
+    }
+    @Test
+    public void initialPathHasNode() {
+        List<Path> initialPaths = pathFactory.getInitialPaths();
+        Path path = initialPaths.get(12);
+        assertThat(path.getLength(), is(1));
+        assertThat(path.containsNode(12), is(true));
     }
     @Test
     public void emptyPathShouldHaveNextPathWithOneNode() {
-        List<Path> emptyPaths = pathFactory.getInitialPaths();
-        List<Path> nextPaths = pathFactory.getNextPaths(emptyPaths.get(0));
+        Path emptyPath = new Path();
+        List<Path> nextPaths = pathFactory.getNextPaths(emptyPath);
         Path nextPath = nextPaths.get(0);
         assertThat(nextPath.getLength(), is(equalTo(1)));
     }

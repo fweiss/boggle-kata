@@ -32,7 +32,7 @@ public class PathFactory {
         int[] nodes = path.getNodes();
         int currentLength = path.getLength();
         if (currentLength == 0) {
-            return path.empty();
+            return getInitialPaths();
         }
         int currentNode = nodes[currentLength -1];
         List<Path> paths = new ArrayList<Path>();
@@ -65,7 +65,9 @@ public class PathFactory {
     public List<Path> getInitialPaths() {
         List<Path> paths = new ArrayList<Path>();
         for (int i=0; i<16; i++) {
-            Path newPath = new Path();
+            int[] nodes = new int[1];
+            nodes[0] = i;
+            Path newPath = new Path(nodes);
             paths.add(newPath);
         }
         return paths;
