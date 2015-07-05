@@ -3,7 +3,6 @@ package com.uttama.kata.boggle;
 import org.junit.Test;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,17 +10,16 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.hasSize;
 import static org.junit.Assert.*;
 
-public class DictionaryTest {
+public class HashSetVocabularyTest {
     @Test
     public void prefixes() {
-        Dictionary dictionary = new Dictionary();
-        Set<String> prefixes = dictionary.prefixesFor(new HashSet<String>(Arrays.asList("alpha", "all", "beta")));
+        HashSetVocabulary hashSetVocabulary = new HashSetVocabulary();
+        Set<String> prefixes = hashSetVocabulary.prefixesFor(new HashSet<String>(Arrays.asList("alpha", "all", "beta")));
         assertThat(prefixes, hasSize(10));
     }
     @Test
     public void containsPrefix() {
-        Dictionary dictionary = new Dictionary();
-        dictionary.loadPrefixes();
-        assertThat(dictionary.containsPrefix("wo"), is(true));
+        HashSetVocabulary hashSetVocabulary = new HashSetVocabulary();
+        assertThat(hashSetVocabulary.containsPrefix("wo"), is(true));
     }
 }

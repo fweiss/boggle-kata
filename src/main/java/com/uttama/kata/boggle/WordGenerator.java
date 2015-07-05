@@ -31,7 +31,7 @@ public class WordGenerator {
         }
         return words;
     }
-    public Set<String> wordsFrom2(Board board, Dictionary dictionary) {
+    public Set<String> wordsFrom2(Board board, Vocabulary vocabulary) {
         Set<String> words = new HashSet<String>();
         paths = new ArrayList<Path>();
         Deque<Path> visit = new ArrayDeque<Path>();
@@ -40,13 +40,13 @@ public class WordGenerator {
             Path visitedPath = visit.pop();
             paths.add(visitedPath);
             String visitedWord = board.apply(visitedPath);
-            if (dictionary.contains(visitedWord)) {
+            if (vocabulary.contains(visitedWord)) {
                 words.add(visitedWord);
             }
             List<Path> nextPaths = pathFactory.getNextPaths(visitedPath);
             for (Path path : nextPaths) {
                 String word = board.apply(path);
-                if (dictionary.containsPrefix(word)) {
+                if (vocabulary.containsPrefix(word)) {
                     visit.add(path);
                 }
             }
@@ -54,11 +54,11 @@ public class WordGenerator {
         return words;
     }
 
-    protected Set<String> applyPathsToBoard(List<Path> paths, Board board, Dictionary dictionary) {
+    protected Set<String> applyPathsToBoard(List<Path> paths, Board board, Vocabulary vocabulary) {
         Set<String> words = new HashSet<>();
         for (Path path : paths) {
             String word = board.apply(path);
-            if (dictionary.contains(word)) {
+            if (vocabulary.contains(word)) {
                 words.add(word);
             }
         }

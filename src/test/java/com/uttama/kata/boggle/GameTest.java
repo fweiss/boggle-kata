@@ -1,7 +1,6 @@
 package com.uttama.kata.boggle;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Set;
@@ -16,15 +15,14 @@ import static org.junit.Assert.*;
 public class GameTest {
 
     private Board board;
-    private Dictionary dictionary;
+    private Vocabulary vocabulary;
     private Game game;
 
     @Before
     public void setUp() throws Exception {
         board = new Board();
-        dictionary = new Dictionary();
-        dictionary.loadPrefixes(); // move
-        game = new Game(board, dictionary, null);
+        vocabulary = new HashSetVocabulary();
+        game = new Game(board, vocabulary, null);
     }
 
     @Test

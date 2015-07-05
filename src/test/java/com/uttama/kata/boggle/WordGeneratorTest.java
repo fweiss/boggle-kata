@@ -5,7 +5,6 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
@@ -33,9 +32,8 @@ public class WordGeneratorTest {
     public void listOfWords() {
 //        board.fillCells("wordplacefouryard");
         board.fillCells("wordxxxxxxxxxxxx");
-        Dictionary dictionary = new Dictionary();
-        dictionary.loadPrefixes();
-        Set<String> words = generator.wordsFrom2(board, dictionary);
+        HashSetVocabulary vocabulary = new HashSetVocabulary();
+        Set<String> words = generator.wordsFrom2(board, vocabulary);
         assertThat(words.size(), is(equalTo(1)));
     }
     // this one takes 15 sec
@@ -53,11 +51,11 @@ public class WordGeneratorTest {
         paths.add(new Path(new int[]{ 1, 2, 3 }));
         paths.add(new Path(new int[]{ 4, 5, 6 }));
         paths.add(new Path(new int[]{ 8, 12, 9, 10, 11 }));
-        Dictionary dictionary = mock(Dictionary.class);
-        when(dictionary.contains("one")).thenReturn(true);
-        when(dictionary.contains("two")).thenReturn(true);
-        when(dictionary.contains("three")).thenReturn(true);
-        Set<String> words = generator.applyPathsToBoard(paths, board, dictionary);
+        Vocabulary vocabulary = mock(HashSetVocabulary.class);
+        when(vocabulary.contains("one")).thenReturn(true);
+        when(vocabulary.contains("two")).thenReturn(true);
+        when(vocabulary.contains("three")).thenReturn(true);
+        Set<String> words = generator.applyPathsToBoard(paths, board, vocabulary);
         assertThat(words, hasSize(3));
         assertThat(words, containsInAnyOrder("one", "two", "three"));
     }

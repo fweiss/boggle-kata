@@ -1,9 +1,8 @@
 package com.uttama.kata.boggle;
 
-import java.util.Set;
-
 /**
- * Created by frankw on 6/12/2015.
+ * A board has rows and columns of cells and each cell contains a letter.
+ * A path can be applied to a board.
  */
 public class Board {
     private char[] cells;

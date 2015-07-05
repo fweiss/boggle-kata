@@ -4,11 +4,15 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Dictionary {
+public class HashSetVocabulary implements Vocabulary {
+    private Set<String> prefixes;
+    public HashSetVocabulary() {
+        loadPrefixes();
+    }
+    @Override
     public boolean contains(String word) {
         return words.contains(word);
     }
-    private Set<String> prefixes;
     private static final Set<String> words = new HashSet<String>(Arrays.asList(
             "and",
             "ant",
@@ -117,11 +121,12 @@ public class Dictionary {
         return prefixes;
     }
 
+    @Override
     public boolean containsPrefix(String prefix) {
         return prefixes.contains(prefix);
     }
 
-    public void loadPrefixes() {
+    private void loadPrefixes() {
         prefixes = prefixesFor(words);
     }
 }
