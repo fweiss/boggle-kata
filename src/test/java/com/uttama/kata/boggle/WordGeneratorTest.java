@@ -48,11 +48,8 @@ public class WordGeneratorTest {
         paths.add(new Path(new int[]{ 1, 2, 3 }));
         paths.add(new Path(new int[]{ 4, 5, 6 }));
         paths.add(new Path(new int[]{ 8, 12, 9, 10, 11 }));
-        Vocabulary vocabulary = mock(HashSetVocabulary.class);
-        when(vocabulary.contains("one")).thenReturn(true);
-        when(vocabulary.contains("two")).thenReturn(true);
-        when(vocabulary.contains("three")).thenReturn(true);
-        Set<String> words = generator.applyPathsToBoard(paths, board, vocabulary);
+        Vocabulary vocabulary = new HashSetVocabulary(new String[] { "one", "two", "three" });
+        Set<String> words = generator.wordsFrom(board, vocabulary);
         assertThat(words, hasSize(3));
         assertThat(words, containsInAnyOrder("one", "two", "three"));
     }

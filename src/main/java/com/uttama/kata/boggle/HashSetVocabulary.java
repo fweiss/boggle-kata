@@ -1,19 +1,31 @@
 package com.uttama.kata.boggle;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
 public class HashSetVocabulary implements Vocabulary {
-    private Set<String> prefixes;
+    private final Set<String> words;
+    private final Set<String> prefixes;
+
     public HashSetVocabulary() {
-        loadPrefixes();
+        words = defaultWords;
+        prefixes = prefixesFor(words);
+    }
+    public HashSetVocabulary(String[] words) {
+        this.words = new HashSet<String>(Arrays.asList(words));
+        prefixes = prefixesFor(this.words);
     }
     @Override
     public boolean contains(String word) {
         return words.contains(word);
     }
-    private static final Set<String> words = new HashSet<String>(Arrays.asList(
+    @Override
+    public boolean containsPrefix(String prefix) {
+        return prefixes.contains(prefix);
+    }
+    private static final Set<String> defaultWords = new HashSet<String>(Arrays.asList(
             "and",
             "ant",
             "antelope",
@@ -119,14 +131,5 @@ public class HashSetVocabulary implements Vocabulary {
             }
         }
         return prefixes;
-    }
-
-    @Override
-    public boolean containsPrefix(String prefix) {
-        return prefixes.contains(prefix);
-    }
-
-    private void loadPrefixes() {
-        prefixes = prefixesFor(words);
     }
 }

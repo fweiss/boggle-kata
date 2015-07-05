@@ -43,15 +43,4 @@ public class WordGenerator {
         }
         return words;
     }
-
-    protected Set<String> applyPathsToBoard(List<Path> paths, Board board, Vocabulary vocabulary) {
-        Set<String> words = new HashSet<>();
-        for (Path path : paths) {
-            String word = board.apply(path);
-            if (vocabulary.contains(word)) {
-                words.add(word);
-            }
-        }
-        return words;
-    }
 }

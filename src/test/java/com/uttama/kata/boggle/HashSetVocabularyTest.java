@@ -12,6 +12,12 @@ import static org.junit.Assert.*;
 
 public class HashSetVocabularyTest {
     @Test
+    public void empty() {
+        Vocabulary vocabulary = new HashSetVocabulary(new String[] {});
+        assertThat(vocabulary.contains("word"), is(false));
+    }
+
+    @Test
     public void prefixes() {
         HashSetVocabulary hashSetVocabulary = new HashSetVocabulary();
         Set<String> prefixes = hashSetVocabulary.prefixesFor(new HashSet<String>(Arrays.asList("alpha", "all", "beta")));
