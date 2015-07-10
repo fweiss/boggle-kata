@@ -4,12 +4,12 @@ import java.util.*;
 
 public class WordGenerator {
     private final PathFactory pathFactory;
-    List<Path> paths;
     public WordGenerator() {
         pathFactory = new PathFactory();
     }
     // this does the brute force 12M
     public void generatePaths() {
+        List<Path> paths;
         paths = new ArrayList<>();
         Deque<Path> visit = new ArrayDeque<>();
         visit.push(new Path());
@@ -23,12 +23,10 @@ public class WordGenerator {
 
     public Set<String> wordsFrom(Board board, Vocabulary vocabulary) {
         Set<String> words = new HashSet<>();
-        paths = new ArrayList<>();
         Deque<Path> visit = new ArrayDeque<>();
         visit.push(new Path());
         while ( ! visit.isEmpty()) {
             Path visitedPath = visit.pop();
-            paths.add(visitedPath);
             String visitedWord = board.apply(visitedPath);
             if (vocabulary.contains(visitedWord)) {
                 words.add(visitedWord);

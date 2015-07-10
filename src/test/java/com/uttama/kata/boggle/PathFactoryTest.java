@@ -41,25 +41,25 @@ public class PathFactoryTest {
     }
     @Test
     public void getCenterMiddle() {
-        Set<Integer> offsets = pathFactory.forNode(5);
+        Set<Integer> offsets = pathFactory.getOffsetsFor(5);
         assertThat(offsets, hasSize(8));
         assertThat(offsets, containsInAnyOrder(-5, -4, -3, -1, 1, 3, 4, 5));
     }
     @Test
     public void topLeft() {
-        Set<Integer> offsets = pathFactory.forNode(0);
+        Set<Integer> offsets = pathFactory.getOffsetsFor(0);
         assertThat(offsets, hasSize(3));
         assertThat(offsets, containsInAnyOrder(1, 4, 5));
     }
     @Test
     public void bottomRight() {
-        Set<Integer> offsets = pathFactory.forNode(15);
+        Set<Integer> offsets = pathFactory.getOffsetsFor(15);
         assertThat(offsets, hasSize(3));
         assertThat(offsets, containsInAnyOrder(-5, -4, -1));
     }
     @Test
     public void middleRight() {
-        Set<Integer> offsets = pathFactory.forNode(7);
+        Set<Integer> offsets = pathFactory.getOffsetsFor(7);
         assertThat(offsets, hasSize(5));
         assertThat(offsets, containsInAnyOrder(-5, -4, -1, 3, 4));
     }

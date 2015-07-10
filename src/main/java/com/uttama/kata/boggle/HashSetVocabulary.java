@@ -5,6 +5,10 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * This class implements the vocabulary via HashSets. This is sufficient for small sets of words,
+ * less than 10,000. For larger sets of words, a Trie implementation is faster an uses less memory.
+ */
 public class HashSetVocabulary implements Vocabulary {
     private final Set<String> words;
     private final Set<String> prefixes;

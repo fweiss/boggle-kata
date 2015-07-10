@@ -10,7 +10,7 @@ public class PathFactory {
     private static final Set<Integer> rightExcludeOffsets = new HashSet<>(Arrays.asList(-3, 1, 5));
     private static final int numberOfRows = 4;
 
-    public Set<Integer> forNode(int node) {
+    public Set<Integer> getOffsetsFor(int node) {
         Set<Integer> candidate = new HashSet<>(allOffsets);
         int row = node / numberOfRows;
         int col = node % numberOfRows;
@@ -36,8 +36,7 @@ public class PathFactory {
         }
         int currentNode = nodes[currentLength -1];
         List<Path> paths = new ArrayList<>();
-        PathFactory pathFactory = new PathFactory();
-        for (int offset : pathFactory.forNode(currentNode)) {
+        for (int offset : getOffsetsFor(currentNode)) {
             int candidateNode = currentNode + offset;
             if (path.containsNode(candidateNode)) {
                 continue;
@@ -50,18 +49,6 @@ public class PathFactory {
         }
         return paths;
     }
-//    protected List<Path> getInitialPaths() {
-//        List<Path> paths = new ArrayList<Path>();
-//        int currentLength = nodes.length;
-//        for (int i=0; i<16; i++) {
-//            int[] newNodes = Arrays.copyOf(nodes, currentLength + 1);
-//            newNodes[currentLength] = i;
-//            Path newPath = new Path();
-//            newPath.nodes = newNodes;
-//            paths.add(newPath);
-//        }
-//        return paths;
-//    }
     public List<Path> getInitialPaths() {
         List<Path> paths = new ArrayList<>();
         for (int i=0; i<16; i++) {
